@@ -7,8 +7,18 @@ output: bookdown::gitbook
 documentclass: book
 biblio-style: apalike
 link-citations: yes
-bibliography: '`r rbbt::bbt_write_bib("bibliography.json", overwrite = TRUE)`'
+new_session: yes  
 ---
 
 # Prerequisites
 
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<img src="port_data/20220921_140223.jpg"
+     width="250" 
+     height="200" />
