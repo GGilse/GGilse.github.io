@@ -18,7 +18,3 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
-
-<img src="port_data/20220921_140223.jpg"
-     width="250" 
-     height="200" />
