@@ -1,91 +1,92 @@
-# Ghislaine van Gilse
+# Curriculum Vitae {-}
+
+## Name {-}
 <img src="port_data/20220921_140223.jpg"
      width="250" 
      height="200" />
 
-Burgemeester Gülcherlaan 20
+Adres
 <br/>
-1217PB Hilversum
 
-Telefoon:         (+31)6 37452589
-<br/>
-Email:            ghislainevangilse@live.nl
 
-Geboortedatum:    06-06-2000
+Telefoon:         
 <br/>
-Geboorteplaats:   Arnhem
+Email:           
+
+Geboortedatum:   
+<br/>
+Geboorteplaats:   
 <br/><br/>
 
-## Werkervaring
+### Werkervaring {-}
 <hr />
 
 Tijdens mijn middelbare school en HBO-opleiding heb ik enkele bijbanen gehad: 
 
-### Action
+**Action**
 Augustus 2015 - februari 2016, Hilversum
 
 Hier heb ik als vakkenvuller medewerkster gewerkt.
 
-### Sociëteit de Unie
+**Sociëteit de Unie**
 Augustus 2018 - februari 2020, Hilversum
 <br/>
 Bij deze herensociëteit heb ik als ampulante kracht in de bediening gewerkt. Daarnaast heb ik ook achter de bar gestaan en incidenteel in de spoelkeuken gewerkt.
  
-### Kinderoppas
+**Kinderoppas**
 September 2018 - mei 2020, Hilversum
 <br/>
 Opgepast op basis- en onderbouw (middelbare) schoolkinderen. Deze heb ik onder meer geholpen bij het maken van hun huiswerk en bij het leren voor toetsen.
 
-### Blokker
+**Blokker**
 Februari 2022 - heden, Hilversum
 <br/>
 Hier werk ik achter de kassa, maar ben ik ook in de winkel bezig met klanten, vakkenvullen en vracht. 
 <br/><br/>
 
-## Opleiding
+### Opleiding {-}
 <hr />
 
-### Alberdingk Thijm College
+**Alberdingk Thijm College**
 September 2013 - juli 2018, Hilversum
 <br/>
 Op deze school heb ik vijf jaar HAVO gedaan.
 Vakkenpakket Natuur & Gezondheid met natuurkunde en economie als keuzevakken.
 
-### ROC Midden-Nederland - VAVO Lyceum Utrecht / HAVO-diploma
+**ROC Midden-Nederland - VAVO Lyceum Utrecht / HAVO-diploma**
 September 2018 - juli 2019, Utrecht
 <br/>
 Het vak natuurkunde gevolgd om mijn HAVO-diploma af te ronden.
 
-### Hogeschool Utrecht / Propedeuse
+**Hogeschool Utrecht / Propedeuse**
 September 2019 - heden, Utrecht
 <br/>
 Opleiding Life Science - Biologie en Medisch laboratorium onderzoek
 Propedeuse behaald: Januari 2021
 
-### Honours behaald:
+**Honours:**
 Februari 2021: Mensenrechten & duurzame ontwikkeling
 <br/><br/>
 
-## Vaardigheden
+### Vaardigheden {-}
 <hr />
 
-### Labvaardigheden
+**Labvaardigheden**
 Onder andere:
 Celkweek, (licht- en fluorescentie)microscopie, SDS-page, Western-blot, (q)PCR, ELISA, (Agarosegel) elektroforese, kloneerwerk
 
-### Data verwerking
+**Data verwerking**
 (Basis)kennis van excel en SPSS
-Basiskennis van het werken met R waaronder,
-  vaardigheid 1
-  vaardigheid 2
-  vaardigheid 3
+Basiskennis van het werken met Rstudio waaronder,
+  Bash
+  R
 
-### Talen
+**Talen**
 Nederlands (moedertaal)
-Engels (Anglia Certificate of English Esol International; Intermidiate (CEFR B1) level)
+Engels B1
 <br/><br/>
 
-## Hobby’s & Interesses
+**Hobby’s & Interesses**
 <hr />
 (Berg)wandelen
 Paardrijden
@@ -95,7 +96,10 @@ Bakken
 Puzzelen
 <br/><br/>
 
-## Nevenactiviteiten
+### Nevenactiviteiten {-}
 <hr />
 
 Gedurende drie jaar op de middelbare school van het Alberdingk Thijm College ben ik actief geweest als lid van de leerlingenraad.
+
+**Vrijwilligerswerk**
+Comic Con November 2022

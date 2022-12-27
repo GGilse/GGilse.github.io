@@ -1,5 +1,6 @@
 bookdown::gitbook:
   css: style.css
+  primary: "#0547E1"
   config:
     toc:
       before: |
