@@ -3,19 +3,19 @@
 ## Name {-}
 <img src="port_data/20220921_140223.jpg"
      width="250" 
-     height="200" />
+     height="200"/>
 
 Adres
 <br/>
+postcode
 
-
-Telefoon:         
+Telefoon:
 <br/>
-Email:           
-
-Geboortedatum:   
+Email:
 <br/>
-Geboorteplaats:   
+Geboortedatum:
+<br/>
+Geboorteplaats:
 <br/><br/>
 
 ### Werkervaring {-}
@@ -89,10 +89,15 @@ Engels B1
 **Hobby’s & Interesses**
 <hr />
 (Berg)wandelen
+<br/>
 Paardrijden
+<br/>
 Skiën
+<br/>
 Trainen met de hond
+<br/>
 Bakken
+<br/>
 Puzzelen
 <br/><br/>
 

@@ -1,0 +1,161 @@
+# Reproducible Research
+
+```{r setup, include=FALSE, eval=F}
+install.packages("readxl")
+install.packages("devtools")
+devtools::install_github("uashogeschoolutrecht/toolboxr")
+install.packages("tidyverse")
+install.packages("here")
+```
+
+```{r libraries, message=FALSE, include=FALSE}
+library(devtools)
+library(readxl)
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(here)
+```
+
+## C.elegans plate experiment
+
+For this experiment, adult C.elegans nematodes have been exposed to varying concentrations of different compounds.
+The data that is used for this exercise is supplied y J. Louter (INT/ILC).
+
+At first we had to review the Excel file with all the data. The file is called ./data.CE.LIQ.FLOW.062_Tidydata.xlsx.
+Something that stood out to me was that the different compounds were measured in nM. But the ethanol and the meduim of the cells was measured in percentage.
+
+The compounds used in this experiment are: 2,6-diisopropylnaphthalene, Decane and Naphthalene with as positive control group 1,5% Ethanol in S-Medium and as negative control group just S-Medium.
+
+```{r inladen excelbestand}
+elegansData <- read_excel(here("port_data/CE.LIQ.FLOW.062_Tidydata.xlsx"))
+tibble(elegansData)
+```
+
+After loading the data into Rstudio we were asked to inspect the data types of the columns: RawData, compName and compConcentration and what types we expected.
+I expect RawData: Numeric/integer, compName: factor and compConcentration: numeric/double.
+The typeof function tells me that RawData is a double. It doesn't contain decimals so it should be integer but this is not a big problem for further analyses. CompName is set as character which should be factor. CompConcentration is character. This is odd since the column contains numbers with decimals so this has to be double.
+This means the data types have not correctly been assigned while importing the data into R.
+
+```{r type of, include=TRUE}
+typeof(elegansData$RawData)
+typeof(elegansData$compName)
+typeof(elegansData$compConcentration)
+```
+
+
+Not reassigning the datatypes while plotting the first plot. With compConcentration on the x-axis and RawData on the y-axis. Also each level of compName got its own colour each level in the expType got its own shape.
+
+```{r scatterplot}
+  ggplot(elegansData, aes(x=compConcentration, y=RawData, shape=expType, colour=compName))+
+  geom_point()+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+  labs(colour="Component name", shape="Experiment type",
+       x="Component Concentration",
+       y="Amount of offspring",
+       title="Amount offspring C.elegans after being exposed to diffirent componentens",
+       subtitle= "Amount of offspring after 68 hours"
+)
+```
+
+As you can see the x-axis has been placed on alphabetic order and not numerical order. This is because the type of compConcentration is 'character' and not 'double'.
+
+Let's reassign the datatypes with the correct ones
+```{r column to numeric, warning=FALSE}
+elegansData$RawData <- as.integer(elegansData$RawData)
+elegansData$compName <- as.factor(elegansData$compName)
+elegansData$compConcentration <- as.numeric(elegansData$compConcentration)
+```
+
+And let's check the types again!
+```{r check type again, include=TRUE}
+class(elegansData$RawData)
+class(elegansData$compName)
+typeof(elegansData$compConcentration)
+```
+
+Now this has been fixed, let's see what the plot looks like.
+
+```{r scatterplot after compC is numeric}
+ggplot(elegansData, aes(x=compConcentration, y=RawData, shape=expType, colour=compName, label=round(compConcentration, digits = 3)))+
+  geom_point()+
+  labs(colour="Component name", shape="Experiment type",
+       x="Component Concentration",
+       y="Amount of offspring",
+       title="Amount offspring C.elegans after being exposed to diffirent componentens",
+       subtitle= "Amount of offspring after 68 hours"
+)
+```
+
+To get a clearer view, a log10 transformation is added on the x-axis. Also a bit of jitter is added so you can see the individual dots better. I've also separated the component.
+
+```{r scatterplot jitter}
+elegansData_nM <- elegansData %>% filter(compUnit == "nM")
+
+  ggplot(elegansData_nM, aes(x=log10(compConcentration), y=RawData, colour=compName))+
+  geom_point(position = position_jitter(h=0.15,w=0.15), show.legend=FALSE)+
+  scale_x_continuous()+
+  labs(colour="Component name", shape="Experiment type",
+       x="Component Concentration (log10)",
+       y="Amount of offspring",
+       title="Amount offspring C.elegans after being exposed to diffirent componentens",
+       subtitle= "Amount of offspring after 68 hours",
+       legend
+)+
+  facet_wrap(~compName)
+  
+elegansData_pct <- elegansData %>% filter(compUnit == "pct")
+
+ggplot(elegansData_pct, aes(x=compConcentration, y=RawData, shape=expType, colour=compName))+
+  geom_point(position = position_jitter(h=0.1,w=0.1))+
+  coord_cartesian(ylim = c(0, 120))+
+  labs(colour="Component name", shape="Experiment type",
+       x="Component Concentration (log10)",
+       y="Amount of offspring",
+       title="Amount offspring C.elegans after being exposed to diffirent componentens",
+       subtitle= "Amount of offspring after 68 hours"
+)
+```
+
+The positive control for this experiments is Ethanol (expType controlPositive in excel file).
+The negative control for this experiment is S-Medium (expType controlNegative in excel file).
+
+For further possible analysis;
+To see if there is indeed an effect of different concentrations in offspring count I'd start with a Shapiro-Wilk test and normalize the data
+
+```{r normalize data}
+MeanOfDataCtrlNeg <- elegansData %>% filter(expType == "controlNegative") %>% summarize(mean = mean(RawData, na.rm = TRUE))
+
+NormCelegansData <- elegansData %>%
+  select(RawData, compName, compConcentration, expType, compUnit) %>% na.omit() %>%
+  mutate(normalized = RawData/MeanOfDataCtrlNeg$mean)
+
+
+elegansData_nM <- NormCelegansData %>% filter(compUnit == "nM")
+
+  ggplot(elegansData_nM, aes(x=log10(compConcentration), y=normalized, colour=compName))+
+  geom_point(position = position_jitter(h=0.15,w=0.15), show.legend=FALSE)+
+  scale_x_continuous()+
+  labs(colour="Component name", shape="Experiment type",
+       x="Component Concentration (log10)",
+       y="Amount of offspring",
+       title="Amount offspring C.elegans after being exposed to diffirent componentens",
+       subtitle= "Amount of offspring after 68 hours",
+       legend
+)+
+  facet_wrap(~compName)
+  
+elegansData_pct <- NormCelegansData %>% filter(compUnit == "pct")
+
+ggplot(elegansData_pct, aes(x=compConcentration, y=normalized, shape=expType, colour=compName))+
+  geom_point(position = position_jitter(h=0.1,w=0.1))+
+  coord_cartesian(ylim = c(0, 1.5))+
+  labs(colour="Component name", shape="Experiment type",
+       x="Component Concentration (log10)",
+       y="Amount of offspring",
+       title="Amount offspring C.elegans after being exposed to diffirent componentens",
+       subtitle= "Amount of offspring after 68 hours"
+)
+```
+
+We have normalized the data so it's easier to understand and work with.

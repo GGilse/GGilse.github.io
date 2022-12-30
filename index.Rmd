@@ -1,5 +1,5 @@
 --- 
-title: "Portfolio Ghislaine van Gilse"
+title: "Portfolio Ghislaine"
 author: "Ghislaine van Gilse"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -19,3 +19,7 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
+This portfolio was created as an assignment for Data Science for Biology 2 at the HU University of Applied Sciences Utrecht.
+
+14 Nov. 2022 - 8 Jan. 2023
