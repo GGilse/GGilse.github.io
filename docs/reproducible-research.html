@@ -1,187 +1,76 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Reproducible Research | Portfolio Ghislaine</title>
-  <meta name="description" content="Chapter 1 Reproducible Research | Portfolio Ghislaine" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 1 Reproducible Research | Portfolio Ghislaine" />
-  <meta property="og:type" content="book" />
-  
-  
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Reproducible Research | Portfolio Ghislaine" />
-  
-  
-  
-
-<meta name="author" content="Ghislaine van Gilse" />
-
-
-<meta name="date" content="2022-12-30" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="curriculum-vitae.html"/>
-
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 1 Reproducible Research | Portfolio Ghislaine</title>
+<meta name="author" content="Ghislaine van Gilse">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Chapter 1 Reproducible Research | Portfolio Ghislaine">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 1 Reproducible Research | Portfolio Ghislaine">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<meta name="description" content="1.1 C.elegans plate experiment For this experiment, adult C.elegans nematodes have been exposed to varying concentrations of different compounds. The data that is used for this exercise is...">
+<meta property="og:description" content="1.1 C.elegans plate experiment For this experiment, adult C.elegans nematodes have been exposed to varying concentrations of different compounds. The data that is used for this exercise is...">
+<meta name="twitter:description" content="1.1 C.elegans plate experiment For this experiment, adult C.elegans nematodes have been exposed to varying concentrations of different compounds. The data that is used for this exercise is...">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
-<li class="chapter" data-level="" data-path="curriculum-vitae.html"><a href="curriculum-vitae.html"><i class="fa fa-check"></i>Curriculum Vitae</a>
-<ul>
-<li class="chapter" data-level="" data-path="curriculum-vitae.html"><a href="curriculum-vitae.html#name"><i class="fa fa-check"></i>Name</a>
-<ul>
-<li class="chapter" data-level="" data-path="curriculum-vitae.html"><a href="curriculum-vitae.html#werkervaring"><i class="fa fa-check"></i>Werkervaring</a></li>
-<li class="chapter" data-level="" data-path="curriculum-vitae.html"><a href="curriculum-vitae.html#opleiding"><i class="fa fa-check"></i>Opleiding</a></li>
-<li class="chapter" data-level="" data-path="curriculum-vitae.html"><a href="curriculum-vitae.html#vaardigheden"><i class="fa fa-check"></i>Vaardigheden</a></li>
-<li class="chapter" data-level="" data-path="curriculum-vitae.html"><a href="curriculum-vitae.html#nevenactiviteiten"><i class="fa fa-check"></i>Nevenactiviteiten</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>1</b> Reproducible Research</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="reproducible-research.html"><a href="reproducible-research.html#c.elegans-plate-experiment"><i class="fa fa-check"></i><b>1.1</b> C.elegans plate experiment</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Portfolio Ghislaine</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Portfolio Ghislaine</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prerequisites</a></li>
+<li><a class="" href="curriculum-vitae.html">Curriculum Vitae</a></li>
+<li><a class="active" href="reproducible-research.html"><span class="header-section-number">1</span> Reproducible Research</a></li>
+<li><a class="" href="open-peer-review.html"><span class="header-section-number">2</span> Open Peer Review</a></li>
+<li><a class="" href="guerilla-principles.html"><span class="header-section-number">3</span> Guerilla Principles</a></li>
+<li><a class="" href="looking-ahead.html"><span class="header-section-number">4</span> Looking Ahead</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="reproducible-research" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Reproducible Research<a href="reproducible-research.html#reproducible-research" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="c.elegans-plate-experiment" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> C.elegans plate experiment<a href="reproducible-research.html#c.elegans-plate-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="reproducible-research" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Reproducible Research<a class="anchor" aria-label="anchor" href="#reproducible-research"><i class="fas fa-link"></i></a>
+</h1>
+<div id="c.elegans-plate-experiment" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> C.elegans plate experiment<a class="anchor" aria-label="anchor" href="#c.elegans-plate-experiment"><i class="fas fa-link"></i></a>
+</h2>
 <p>For this experiment, adult C.elegans nematodes have been exposed to varying concentrations of different compounds.
 The data that is used for this exercise is supplied y J. Louter (INT/ILC).</p>
 <p>At first we had to review the Excel file with all the data. The file is called ./data.CE.LIQ.FLOW.062_Tidydata.xlsx.
 Something that stood out to me was that the different compounds were measured in nM. But the ethanol and the meduim of the cells was measured in percentage.</p>
 <p>The compounds used in this experiment are: 2,6-diisopropylnaphthalene, Decane and Naphthalene with as positive control group 1,5% Ethanol in S-Medium and as negative control group just S-Medium.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="reproducible-research.html#cb1-1" aria-hidden="true" tabindex="-1"></a>elegansData <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&quot;port_data/CE.LIQ.FLOW.062_Tidydata.xlsx&quot;</span>))</span>
-<span id="cb1-2"><a href="reproducible-research.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(elegansData)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">elegansData</span> <span class="op">&lt;-</span> <span class="fu">read_excel</span><span class="op">(</span><span class="fu">here</span><span class="op">(</span><span class="st">"port_data/CE.LIQ.FLOW.062_Tidydata.xlsx"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">tibble</span><span class="op">(</span><span class="va">elegansData</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 360 × 34
 ##    plateRow plateCo…¹ vialNr dropC…² expType expRe…³ expName expDate            
 ##    &lt;lgl&gt;    &lt;lgl&gt;      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;dttm&gt;             
@@ -206,177 +95,162 @@ Something that stood out to me was that the different compounds were measured in
 I expect RawData: Numeric/integer, compName: factor and compConcentration: numeric/double.
 The typeof function tells me that RawData is a double. It doesn’t contain decimals so it should be integer but this is not a big problem for further analyses. CompName is set as character which should be factor. CompConcentration is character. This is odd since the column contains numbers with decimals so this has to be double.
 This means the data types have not correctly been assigned while importing the data into R.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="reproducible-research.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(elegansData<span class="sc">$</span>RawData)</span></code></pre></div>
-<pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="reproducible-research.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(elegansData<span class="sc">$</span>compName)</span></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="reproducible-research.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(elegansData<span class="sc">$</span>compConcentration)</span></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">elegansData</span><span class="op">$</span><span class="va">RawData</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] "double"</code></pre>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">elegansData</span><span class="op">$</span><span class="va">compName</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] "character"</code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">elegansData</span><span class="op">$</span><span class="va">compConcentration</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] "character"</code></pre>
 <p>Not reassigning the datatypes while plotting the first plot. With compConcentration on the x-axis and RawData on the y-axis. Also each level of compName got its own colour each level in the expType got its own shape.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="reproducible-research.html#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(elegansData, <span class="fu">aes</span>(<span class="at">x=</span>compConcentration, <span class="at">y=</span>RawData, <span class="at">shape=</span>expType, <span class="at">colour=</span>compName))<span class="sc">+</span></span>
-<span id="cb9-2"><a href="reproducible-research.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb9-3"><a href="reproducible-research.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb9-4"><a href="reproducible-research.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour=</span><span class="st">&quot;Component name&quot;</span>, <span class="at">shape=</span><span class="st">&quot;Experiment type&quot;</span>,</span>
-<span id="cb9-5"><a href="reproducible-research.html#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Component Concentration&quot;</span>,</span>
-<span id="cb9-6"><a href="reproducible-research.html#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Amount of offspring&quot;</span>,</span>
-<span id="cb9-7"><a href="reproducible-research.html#cb9-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">&quot;Amount offspring C.elegans after being exposed to diffirent componentens&quot;</span>,</span>
-<span id="cb9-8"><a href="reproducible-research.html#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">&quot;Amount of offspring after 68 hours&quot;</span></span>
-<span id="cb9-9"><a href="reproducible-research.html#cb9-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>  <span class="fu">ggplot</span><span class="op">(</span><span class="va">elegansData</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">compConcentration</span>, y<span class="op">=</span><span class="va">RawData</span>, shape<span class="op">=</span><span class="va">expType</span>, colour<span class="op">=</span><span class="va">compName</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, vjust <span class="op">=</span> <span class="fl">1</span>, hjust<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>colour<span class="op">=</span><span class="st">"Component name"</span>, shape<span class="op">=</span><span class="st">"Experiment type"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Component Concentration"</span>,</span>
+<span>       y<span class="op">=</span><span class="st">"Amount of offspring"</span>,</span>
+<span>       title<span class="op">=</span><span class="st">"Amount offspring C.elegans after being exposed to diffirent componentens"</span>,</span>
+<span>       subtitle<span class="op">=</span> <span class="st">"Amount of offspring after 68 hours"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning: Removed 5 rows containing missing values (`geom_point()`).</code></pre>
-<p><img src="bookdown-portfolio_files/figure-html/scatterplot-1.png" width="672" /></p>
+<div class="inline-figure"><img src="bookdown-portfolio_files/figure-html/scatterplot-1.png" width="672"></div>
 <p>As you can see the x-axis has been placed on alphabetic order and not numerical order. This is because the type of compConcentration is ‘character’ and not ‘double’.</p>
 <p>Let’s reassign the datatypes with the correct ones</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="reproducible-research.html#cb11-1" aria-hidden="true" tabindex="-1"></a>elegansData<span class="sc">$</span>RawData <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(elegansData<span class="sc">$</span>RawData)</span>
-<span id="cb11-2"><a href="reproducible-research.html#cb11-2" aria-hidden="true" tabindex="-1"></a>elegansData<span class="sc">$</span>compName <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(elegansData<span class="sc">$</span>compName)</span>
-<span id="cb11-3"><a href="reproducible-research.html#cb11-3" aria-hidden="true" tabindex="-1"></a>elegansData<span class="sc">$</span>compConcentration <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(elegansData<span class="sc">$</span>compConcentration)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">elegansData</span><span class="op">$</span><span class="va">RawData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">elegansData</span><span class="op">$</span><span class="va">RawData</span><span class="op">)</span></span>
+<span><span class="va">elegansData</span><span class="op">$</span><span class="va">compName</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">elegansData</span><span class="op">$</span><span class="va">compName</span><span class="op">)</span></span>
+<span><span class="va">elegansData</span><span class="op">$</span><span class="va">compConcentration</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">elegansData</span><span class="op">$</span><span class="va">compConcentration</span><span class="op">)</span></span></code></pre></div>
 <p>And let’s check the types again!</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="reproducible-research.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elegansData<span class="sc">$</span>RawData)</span></code></pre></div>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="reproducible-research.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elegansData<span class="sc">$</span>compName)</span></code></pre></div>
-<pre><code>## [1] &quot;factor&quot;</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="reproducible-research.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(elegansData<span class="sc">$</span>compConcentration)</span></code></pre></div>
-<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">elegansData</span><span class="op">$</span><span class="va">RawData</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] "integer"</code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">elegansData</span><span class="op">$</span><span class="va">compName</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] "factor"</code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">elegansData</span><span class="op">$</span><span class="va">compConcentration</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] "double"</code></pre>
 <p>Now this has been fixed, let’s see what the plot looks like.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="reproducible-research.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elegansData, <span class="fu">aes</span>(<span class="at">x=</span>compConcentration, <span class="at">y=</span>RawData, <span class="at">shape=</span>expType, <span class="at">colour=</span>compName, <span class="at">label=</span><span class="fu">round</span>(compConcentration, <span class="at">digits =</span> <span class="dv">3</span>)))<span class="sc">+</span></span>
-<span id="cb18-2"><a href="reproducible-research.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb18-3"><a href="reproducible-research.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour=</span><span class="st">&quot;Component name&quot;</span>, <span class="at">shape=</span><span class="st">&quot;Experiment type&quot;</span>,</span>
-<span id="cb18-4"><a href="reproducible-research.html#cb18-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Component Concentration&quot;</span>,</span>
-<span id="cb18-5"><a href="reproducible-research.html#cb18-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Amount of offspring&quot;</span>,</span>
-<span id="cb18-6"><a href="reproducible-research.html#cb18-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">&quot;Amount offspring C.elegans after being exposed to diffirent componentens&quot;</span>,</span>
-<span id="cb18-7"><a href="reproducible-research.html#cb18-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">&quot;Amount of offspring after 68 hours&quot;</span></span>
-<span id="cb18-8"><a href="reproducible-research.html#cb18-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">elegansData</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">compConcentration</span>, y<span class="op">=</span><span class="va">RawData</span>, shape<span class="op">=</span><span class="va">expType</span>, colour<span class="op">=</span><span class="va">compName</span>, label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">compConcentration</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>colour<span class="op">=</span><span class="st">"Component name"</span>, shape<span class="op">=</span><span class="st">"Experiment type"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Component Concentration"</span>,</span>
+<span>       y<span class="op">=</span><span class="st">"Amount of offspring"</span>,</span>
+<span>       title<span class="op">=</span><span class="st">"Amount offspring C.elegans after being exposed to diffirent componentens"</span>,</span>
+<span>       subtitle<span class="op">=</span> <span class="st">"Amount of offspring after 68 hours"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning: Removed 6 rows containing missing values (`geom_point()`).</code></pre>
-<p><img src="bookdown-portfolio_files/figure-html/scatterplot%20after%20compC%20is%20numeric-1.png" width="672" /></p>
+<div class="inline-figure"><img src="bookdown-portfolio_files/figure-html/scatterplot%20after%20compC%20is%20numeric-1.png" width="672"></div>
 <p>To get a clearer view, a log10 transformation is added on the x-axis. Also a bit of jitter is added so you can see the individual dots better. I’ve also separated the component.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="reproducible-research.html#cb20-1" aria-hidden="true" tabindex="-1"></a>elegansData_nM <span class="ot">&lt;-</span> elegansData <span class="sc">%&gt;%</span> <span class="fu">filter</span>(compUnit <span class="sc">==</span> <span class="st">&quot;nM&quot;</span>)</span>
-<span id="cb20-2"><a href="reproducible-research.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="reproducible-research.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(elegansData_nM, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log10</span>(compConcentration), <span class="at">y=</span>RawData, <span class="at">colour=</span>compName))<span class="sc">+</span></span>
-<span id="cb20-4"><a href="reproducible-research.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">h=</span><span class="fl">0.15</span>,<span class="at">w=</span><span class="fl">0.15</span>), <span class="at">show.legend=</span><span class="cn">FALSE</span>)<span class="sc">+</span></span>
-<span id="cb20-5"><a href="reproducible-research.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>()<span class="sc">+</span></span>
-<span id="cb20-6"><a href="reproducible-research.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour=</span><span class="st">&quot;Component name&quot;</span>, <span class="at">shape=</span><span class="st">&quot;Experiment type&quot;</span>,</span>
-<span id="cb20-7"><a href="reproducible-research.html#cb20-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Component Concentration (log10)&quot;</span>,</span>
-<span id="cb20-8"><a href="reproducible-research.html#cb20-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Amount of offspring&quot;</span>,</span>
-<span id="cb20-9"><a href="reproducible-research.html#cb20-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">&quot;Amount offspring C.elegans after being exposed to diffirent componentens&quot;</span>,</span>
-<span id="cb20-10"><a href="reproducible-research.html#cb20-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">&quot;Amount of offspring after 68 hours&quot;</span>,</span>
-<span id="cb20-11"><a href="reproducible-research.html#cb20-11" aria-hidden="true" tabindex="-1"></a>       legend</span>
-<span id="cb20-12"><a href="reproducible-research.html#cb20-12" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
-<span id="cb20-13"><a href="reproducible-research.html#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>compName)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">elegansData_nM</span> <span class="op">&lt;-</span> <span class="va">elegansData</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">compUnit</span> <span class="op">==</span> <span class="st">"nM"</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="va">elegansData_nM</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">compConcentration</span><span class="op">)</span>, y<span class="op">=</span><span class="va">RawData</span>, colour<span class="op">=</span><span class="va">compName</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>position <span class="op">=</span> <span class="fu">position_jitter</span><span class="op">(</span>h<span class="op">=</span><span class="fl">0.15</span>,w<span class="op">=</span><span class="fl">0.15</span><span class="op">)</span>, show.legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>colour<span class="op">=</span><span class="st">"Component name"</span>, shape<span class="op">=</span><span class="st">"Experiment type"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Component Concentration (log10)"</span>,</span>
+<span>       y<span class="op">=</span><span class="st">"Amount of offspring"</span>,</span>
+<span>       title<span class="op">=</span><span class="st">"Amount offspring C.elegans after being exposed to diffirent componentens"</span>,</span>
+<span>       subtitle<span class="op">=</span> <span class="st">"Amount of offspring after 68 hours"</span>,</span>
+<span>       <span class="va">legend</span></span>
+<span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">compName</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning: Removed 6 rows containing missing values (`geom_point()`).</code></pre>
-<p><img src="bookdown-portfolio_files/figure-html/scatterplot%20jitter-1.png" width="672" /></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="reproducible-research.html#cb22-1" aria-hidden="true" tabindex="-1"></a>elegansData_pct <span class="ot">&lt;-</span> elegansData <span class="sc">%&gt;%</span> <span class="fu">filter</span>(compUnit <span class="sc">==</span> <span class="st">&quot;pct&quot;</span>)</span>
-<span id="cb22-2"><a href="reproducible-research.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="reproducible-research.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elegansData_pct, <span class="fu">aes</span>(<span class="at">x=</span>compConcentration, <span class="at">y=</span>RawData, <span class="at">shape=</span>expType, <span class="at">colour=</span>compName))<span class="sc">+</span></span>
-<span id="cb22-4"><a href="reproducible-research.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">h=</span><span class="fl">0.1</span>,<span class="at">w=</span><span class="fl">0.1</span>))<span class="sc">+</span></span>
-<span id="cb22-5"><a href="reproducible-research.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">120</span>))<span class="sc">+</span></span>
-<span id="cb22-6"><a href="reproducible-research.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour=</span><span class="st">&quot;Component name&quot;</span>, <span class="at">shape=</span><span class="st">&quot;Experiment type&quot;</span>,</span>
-<span id="cb22-7"><a href="reproducible-research.html#cb22-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Component Concentration (log10)&quot;</span>,</span>
-<span id="cb22-8"><a href="reproducible-research.html#cb22-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Amount of offspring&quot;</span>,</span>
-<span id="cb22-9"><a href="reproducible-research.html#cb22-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">&quot;Amount offspring C.elegans after being exposed to diffirent componentens&quot;</span>,</span>
-<span id="cb22-10"><a href="reproducible-research.html#cb22-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">&quot;Amount of offspring after 68 hours&quot;</span></span>
-<span id="cb22-11"><a href="reproducible-research.html#cb22-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="bookdown-portfolio_files/figure-html/scatterplot%20jitter-2.png" width="672" /></p>
+<div class="inline-figure"><img src="bookdown-portfolio_files/figure-html/scatterplot%20jitter-1.png" width="672"></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">elegansData_pct</span> <span class="op">&lt;-</span> <span class="va">elegansData</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">compUnit</span> <span class="op">==</span> <span class="st">"pct"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">elegansData_pct</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">compConcentration</span>, y<span class="op">=</span><span class="va">RawData</span>, shape<span class="op">=</span><span class="va">expType</span>, colour<span class="op">=</span><span class="va">compName</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>position <span class="op">=</span> <span class="fu">position_jitter</span><span class="op">(</span>h<span class="op">=</span><span class="fl">0.1</span>,w<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">coord_cartesian</span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>colour<span class="op">=</span><span class="st">"Component name"</span>, shape<span class="op">=</span><span class="st">"Experiment type"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Component Concentration (log10)"</span>,</span>
+<span>       y<span class="op">=</span><span class="st">"Amount of offspring"</span>,</span>
+<span>       title<span class="op">=</span><span class="st">"Amount offspring C.elegans after being exposed to diffirent componentens"</span>,</span>
+<span>       subtitle<span class="op">=</span> <span class="st">"Amount of offspring after 68 hours"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="bookdown-portfolio_files/figure-html/scatterplot%20jitter-2.png" width="672"></div>
 <p>The positive control for this experiments is Ethanol (expType controlPositive in excel file).
 The negative control for this experiment is S-Medium (expType controlNegative in excel file).</p>
-<p>For further posible analysis;
+<p>For further possible analysis;
 To see if there is indeed an effect of different concentrations in offspring count I’d start with a Shapiro-Wilk test and normalize the data</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="reproducible-research.html#cb23-1" aria-hidden="true" tabindex="-1"></a>MeanOfDataCtrlNeg <span class="ot">&lt;-</span> elegansData <span class="sc">%&gt;%</span> <span class="fu">filter</span>(expType <span class="sc">==</span> <span class="st">&quot;controlNegative&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(RawData, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb23-2"><a href="reproducible-research.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="reproducible-research.html#cb23-3" aria-hidden="true" tabindex="-1"></a>NormCelegansData <span class="ot">&lt;-</span> elegansData <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="reproducible-research.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(RawData, compName, compConcentration, expType, compUnit) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb23-5"><a href="reproducible-research.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">normalized =</span> RawData<span class="sc">/</span>MeanOfDataCtrlNeg<span class="sc">$</span>mean)</span>
-<span id="cb23-6"><a href="reproducible-research.html#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="reproducible-research.html#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="reproducible-research.html#cb23-8" aria-hidden="true" tabindex="-1"></a>elegansData_nM <span class="ot">&lt;-</span> NormCelegansData <span class="sc">%&gt;%</span> <span class="fu">filter</span>(compUnit <span class="sc">==</span> <span class="st">&quot;nM&quot;</span>)</span>
-<span id="cb23-9"><a href="reproducible-research.html#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="reproducible-research.html#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(elegansData_nM, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log10</span>(compConcentration), <span class="at">y=</span>RawData, <span class="at">colour=</span>compName))<span class="sc">+</span></span>
-<span id="cb23-11"><a href="reproducible-research.html#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">h=</span><span class="fl">0.15</span>,<span class="at">w=</span><span class="fl">0.15</span>), <span class="at">show.legend=</span><span class="cn">FALSE</span>)<span class="sc">+</span></span>
-<span id="cb23-12"><a href="reproducible-research.html#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>()<span class="sc">+</span></span>
-<span id="cb23-13"><a href="reproducible-research.html#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour=</span><span class="st">&quot;Component name&quot;</span>, <span class="at">shape=</span><span class="st">&quot;Experiment type&quot;</span>,</span>
-<span id="cb23-14"><a href="reproducible-research.html#cb23-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Component Concentration (log10)&quot;</span>,</span>
-<span id="cb23-15"><a href="reproducible-research.html#cb23-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Amount of offspring&quot;</span>,</span>
-<span id="cb23-16"><a href="reproducible-research.html#cb23-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">&quot;Amount offspring C.elegans after being exposed to diffirent componentens&quot;</span>,</span>
-<span id="cb23-17"><a href="reproducible-research.html#cb23-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">&quot;Amount of offspring after 68 hours&quot;</span>,</span>
-<span id="cb23-18"><a href="reproducible-research.html#cb23-18" aria-hidden="true" tabindex="-1"></a>       legend</span>
-<span id="cb23-19"><a href="reproducible-research.html#cb23-19" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
-<span id="cb23-20"><a href="reproducible-research.html#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>compName)</span></code></pre></div>
-<p><img src="bookdown-portfolio_files/figure-html/normalize%20data-1.png" width="672" /></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="reproducible-research.html#cb24-1" aria-hidden="true" tabindex="-1"></a>elegansData_pct <span class="ot">&lt;-</span> NormCelegansData <span class="sc">%&gt;%</span> <span class="fu">filter</span>(compUnit <span class="sc">==</span> <span class="st">&quot;pct&quot;</span>)</span>
-<span id="cb24-2"><a href="reproducible-research.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="reproducible-research.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(elegansData_pct, <span class="fu">aes</span>(<span class="at">x=</span>compConcentration, <span class="at">y=</span>RawData, <span class="at">shape=</span>expType, <span class="at">colour=</span>compName))<span class="sc">+</span></span>
-<span id="cb24-4"><a href="reproducible-research.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">h=</span><span class="fl">0.1</span>,<span class="at">w=</span><span class="fl">0.1</span>))<span class="sc">+</span></span>
-<span id="cb24-5"><a href="reproducible-research.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">120</span>))<span class="sc">+</span></span>
-<span id="cb24-6"><a href="reproducible-research.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour=</span><span class="st">&quot;Component name&quot;</span>, <span class="at">shape=</span><span class="st">&quot;Experiment type&quot;</span>,</span>
-<span id="cb24-7"><a href="reproducible-research.html#cb24-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Component Concentration (log10)&quot;</span>,</span>
-<span id="cb24-8"><a href="reproducible-research.html#cb24-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Amount of offspring&quot;</span>,</span>
-<span id="cb24-9"><a href="reproducible-research.html#cb24-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">&quot;Amount offspring C.elegans after being exposed to diffirent componentens&quot;</span>,</span>
-<span id="cb24-10"><a href="reproducible-research.html#cb24-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">&quot;Amount of offspring after 68 hours&quot;</span></span>
-<span id="cb24-11"><a href="reproducible-research.html#cb24-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="bookdown-portfolio_files/figure-html/normalize%20data-2.png" width="672" /></p>
-<p>#J. Normalize the data for the controlNegative in such a way that the mean value for controlNegative is exactly equal to 1 and that all other values are expressed as a fraction thereof. Rerun your graphs with the normalized data.</p>
-<p>#K. Why would you want to take the step under J?</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">MeanOfDataCtrlNeg</span> <span class="op">&lt;-</span> <span class="va">elegansData</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">expType</span> <span class="op">==</span> <span class="st">"controlNegative"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">RawData</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">NormCelegansData</span> <span class="op">&lt;-</span> <span class="va">elegansData</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">RawData</span>, <span class="va">compName</span>, <span class="va">compConcentration</span>, <span class="va">expType</span>, <span class="va">compUnit</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>normalized <span class="op">=</span> <span class="va">RawData</span><span class="op">/</span><span class="va">MeanOfDataCtrlNeg</span><span class="op">$</span><span class="va">mean</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">elegansData_nM</span> <span class="op">&lt;-</span> <span class="va">NormCelegansData</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">compUnit</span> <span class="op">==</span> <span class="st">"nM"</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="va">elegansData_nM</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">compConcentration</span><span class="op">)</span>, y<span class="op">=</span><span class="va">normalized</span>, colour<span class="op">=</span><span class="va">compName</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>position <span class="op">=</span> <span class="fu">position_jitter</span><span class="op">(</span>h<span class="op">=</span><span class="fl">0.15</span>,w<span class="op">=</span><span class="fl">0.15</span><span class="op">)</span>, show.legend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>colour<span class="op">=</span><span class="st">"Component name"</span>, shape<span class="op">=</span><span class="st">"Experiment type"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Component Concentration (log10)"</span>,</span>
+<span>       y<span class="op">=</span><span class="st">"Amount of offspring"</span>,</span>
+<span>       title<span class="op">=</span><span class="st">"Amount offspring C.elegans after being exposed to diffirent componentens"</span>,</span>
+<span>       subtitle<span class="op">=</span> <span class="st">"Amount of offspring after 68 hours"</span>,</span>
+<span>       <span class="va">legend</span></span>
+<span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">compName</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="bookdown-portfolio_files/figure-html/normalize%20data-1.png" width="672"></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">elegansData_pct</span> <span class="op">&lt;-</span> <span class="va">NormCelegansData</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">compUnit</span> <span class="op">==</span> <span class="st">"pct"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">elegansData_pct</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">compConcentration</span>, y<span class="op">=</span><span class="va">normalized</span>, shape<span class="op">=</span><span class="va">expType</span>, colour<span class="op">=</span><span class="va">compName</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>position <span class="op">=</span> <span class="fu">position_jitter</span><span class="op">(</span>h<span class="op">=</span><span class="fl">0.1</span>,w<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">coord_cartesian</span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1.5</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>colour<span class="op">=</span><span class="st">"Component name"</span>, shape<span class="op">=</span><span class="st">"Experiment type"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Component Concentration (log10)"</span>,</span>
+<span>       y<span class="op">=</span><span class="st">"Amount of offspring"</span>,</span>
+<span>       title<span class="op">=</span><span class="st">"Amount offspring C.elegans after being exposed to diffirent componentens"</span>,</span>
+<span>       subtitle<span class="op">=</span> <span class="st">"Amount of offspring after 68 hours"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure">
+<img src="bookdown-portfolio_files/figure-html/normalize%20data-2.png" width="672">
+The data has been normalized so it’s easier to understand and work with.</div>
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="curriculum-vitae.html">Curriculum Vitae</a></div>
+<div class="next"><a href="open-peer-review.html"><span class="header-section-number">2</span> Open Peer Review</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#reproducible-research"><span class="header-section-number">1</span> Reproducible Research</a></li>
+<li><a class="nav-link" href="#c.elegans-plate-experiment"><span class="header-section-number">1.1</span> C.elegans plate experiment</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="curriculum-vitae.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
 
-    </div>
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Portfolio Ghislaine</strong>" was written by Ghislaine van Gilse. It was last built on 2023-01-02.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-Celegans_plate_experiment.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["bookdown-portfolio.pdf", "bookdown-portfolio.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
 </body>
-
 </html>

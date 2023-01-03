@@ -1,2 +1,5 @@
 reproducible-research
 c.elegans-plate-experiment
+open-peer-review
+guerilla-principles
+looking-ahead
