@@ -1,0 +1,17 @@
+# Looking Ahead
+
+For portfolio assigment 3.2 we were asked to answer the following quesitons.
+<br/>
+
+* Where do I want to be in ~2 years time?
+* How am I doing now with respect to this goal?
+* What would be the next skill to learn?
+
+<br/>
+In two years I hope to be done with school. I still have some subjects left and the internship is a period of a year. It all should be doable but of course we don't know what the future brings. I'd also like to start a job but I'm not sure what I like to do yet, so I keep an open mind. I'd like to combine data science with the practical work. If I could I'd like to work with DNA or genetics.
+<br/>
+
+How I am doing with respect to this goal? Hmm it could be better. I've been having troubles with focussing so I end up starting at my screen all day and not doing anything productive. I still hope I can be done with school by February 2024.
+<br/>
+
+So for a next skill it would be nice to learn more about genetics. So maybe trying to find if some mutations occur ofter in specific diseases.

@@ -1,0 +1,27 @@
+---
+title: "Untitled"
+author: "Ghislaine van Gilse"
+date: "11/2/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, engine.opts='-i', echo=T, eval=F}
+# install phyloseq package
+BiocManager::install("phyloseq")
+```
+
+```{r, engine.opts='-i', echo=T, eval=T}
+# load nessecary packages 
+library(phyloseq)
+library(ggplot2)
+```
+
+```{r, engine.opts='-i', echo=T, eval=T}
+data <- "~/daur2/mock1_bracken_species.biom"
+merged_metagenomes <- import_biom(data)
+#View(merged_metagenomes@tax_table@.Data)
+```

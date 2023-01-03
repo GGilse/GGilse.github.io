@@ -1,0 +1,95 @@
+---
+title: "Untitled"
+author: "Ghislaine van Gilse"
+date: "11/1/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{bash, engine.opts='-i', echo=T, eval=F}
+# activate environment
+conda activate meta
+
+#install kraken2 and answer y to proceed question
+echo "y" | conda install -c bioconda kraken2
+
+conda deactivate
+```
+
+Exercise 7.1
+kraken2 requires a number of parameters to execute the identification, what do you think the following parameters control? (Google is your friend)
+
+--db    - to redirect to the database that should be used
+--threads   - to control the load on the server
+--paired    - to indicate we are using paired-end sequencing reads
+--gzip-compressed   - to indicate that the fastq files are compressed
+--output    - to specify the output file as opposed to printing the results on screen
+--report    - also generating a file with a more human friendly output format
+--use-names - to include species names on top of the taxid
+
+
+```{bash, engine.opts='-i', echo=T, eval=F}
+# activate environment
+conda activate meta
+
+kraken2 --db /home/daur2/metagenomics/minikraken2_v2_8GB_201904_UPDATE/ --threads 2 --paired --gzip-compressed --output ~/daur2/les7//mock1.kraken --report ~/daur2/les7/mock1.report --use-names /home/daur2/metagenomics/reader_data/HU1_MOCK1_L001_R1_001.fastq.gz /home/daur2/metagenomics/reader_data/HU1_MOCK1_L001_R2_001.fastq.gz
+
+conda deactivate
+```
+
+Exercise 7.2
+How many reads are classified and how many remain unclassified? Explain why kraken2 is not able to classify some reads.
+
+Exercise 7.3
+What do the six columns stand for in our .report output? Try to find the answer with Google.
+-Percentage of fragments covered by the clade rooted at this taxon
+-Number of fragments covered by the clade rooted at this taxon
+-Number of fragments assigned directly to this taxon
+-A rank code, indicating (U)nclassified, (R)oot, (D)omain, (K)ingdom, (P)hylum, (C)lass, (O)rder, (F)amily, (G)enus, or (S)pecies.
+-NCBI taxonomic ID number
+-Indented scientific name
+
+```{bash, engine.opts='-i', echo=T, eval=F}
+# activate environment
+conda activate meta
+
+echo "y" | conda install -c bioconda bracken
+
+conda deactivate
+```
+
+```{bash, engine.opts='-i', echo=T, eval=F}
+# activate environment
+conda activate meta
+
+bracken -d /home/daur2/metagenomics/minikraken2_v2_8GB_201904_UPDATE/ -i ~/daur2/les7/mock1.report -o ~/daur2/les7/mock1.bracken
+
+conda deactivate
+```
+
+Exercise 7.4
+Did the bracken analysis result in more unclassified reads? How many unclassified reads are left?
+  Nee, bracken does not perform identification, it only re-estimates the kraken2 abundance results. There are still 4.386.340 unclassified reads.
+
+
+```{bash, engine.opts='-i', echo=T, eval=F}
+# activate environment
+conda activate meta
+
+# install kraken-biom and answer y to proceed question
+echo "y" | conda install -c bioconda kraken-biom
+
+conda deactivate
+```
+
+```{bash, engine.opts='-i', echo=T, eval=T}
+# activate environment
+conda activate meta
+
+kraken-biom ~/daur2/les7/mock1_bracken_species.report --fmt json -o ~/daur2/mock1_bracken_species.biom
+
+conda deactivate
+```

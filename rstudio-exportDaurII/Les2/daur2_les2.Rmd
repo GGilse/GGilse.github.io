@@ -1,0 +1,240 @@
+---
+title: "daur_les2"
+author: "Ghislaine van Gilse"
+date: "10/18/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+library(Rsubread)
+library(tidyverse)
+library(ggplot2)
+library(DESeq2)
+library(pheatmap)
+
+```
+
+```{r les 2}
+# Load the required libraries
+library(Rsubread)
+
+# Create object with input dir for bam files
+bam_dir <- "./rnaseq_airway/bam/"
+
+# Create object with output dir for count tables
+counts_dir <- "./rnaseq_airway/counts/"
+
+# Create vector with names of bam files
+bam_files <- list.files(bam_dir, pattern = ".*\\.bam$", full.names = TRUE)
+
+# Count the reads per gene using the in-built NCBI RefSeq annotations
+read_counts <- featureCounts(
+  
+  files = bam_files,
+  annot.inbuilt = "hg38",
+  useMetaFeatures = TRUE,
+  strandSpecific = 0,
+  isPairedEnd = TRUE, 
+  countReadPairs = TRUE, 
+  nthreads = 10
+)
+```
+
+Exercise 2.1
+Check the help function of the featureCounts() function. What do the different options that are specified in the code above, mean?
+  files                   Een karakter vector dat namen geeft aan input files die read mapping results bevatten.
+                          The bam files to use for generating the count table.
+  annot.inbuilt = "hg38"  Ingebouwde annotation die gebruikt wordt om reads te samenvatten
+                          In-built gene annotation to use for counting. In this case, the hg38 NCBI RefSeq annotation is used.
+  useMetaFeatures = TRUE  If set to TRUE, fragments will be counted per gene and not per transcript (NB: each gene can have multiple transcripts, because of alternative splicing).
+  strandSpecific = 0      Een integer vector dat induceert wanneer een strand specifieke optelling moet gebeuren
+                          For some RNA-seq datasets, an RNA-seq library preparation method is used that distinguishes between RNA molecules coming from the plus strand or the minus strand. In case of the airway study, a so-called ‘unstranded’ protocol was used (no distinction between plus/minus strand molecules), so this option is set to ‘0’.
+  isPairedEnd = TRUE      Geeft aan wanneer een library paried-end heeft of niet. Bij TRUE wel paired-end RNA-seq dataset
+                          Set to TRUE to indicate that this dataset is a paired-end RNA-seq dataset
+  countReadPairs = TRUE   If set to TRUE, fragments will be counted instead of reads.
+  nthreads = 10           Hoeveelheid CPU die je wil gebruiken om dit uit te voeren.
+                          The amount of CPU cores to create the count table was set to 10 to reduce the computation time
+
+Exercise 2.2
+Each help page in R also always specifies what the output of the function looks like. You can find this information in the ‘Value’ section.
+
+Look at the help page of the featureCounts() function and find out what the output of the function is. Check also if this is true for the count table of the airway study by loading this count table into R.
+
+  The function outputs a list with several elements:
+- counts: contains a matrix with the counts for each gene for each sample.
+- annotation: contains a dataframe with the gene annotations that were used to generate the count table. This annotation  includes the gene identifier, chromosome, start and end postion, strand and total length of all exons.
+- targets: contains a vector with the sample information (if available).
+- stat: gives a dataframe with the count statistics.
+
+You can check the output yourself by loading and inspecting the count table:
+
+# Load the count table into R
+read_counts <- readRDS("/home/daur2/rnaseq/rnaseq_airway/counts/read_counts.rds")
+
+# Inspect the count table object
+str(read_counts)
+
+```{r vraag 2.3}
+Exercise 2.3
+Use the ‘stat’ dataframe from the count table object to create a bar graph with for each sample indicating the percentage of assigned fragments (compared to the total number of fragments).
+
+# Obtain the dataframe with the statistics
+count_stats <- read_counts$stat
+
+# Convert first column to rownames
+rownames(count_stats) <- count_stats$Status
+count_stats$Status <- NULL
+
+# Calculate the percentage of uniquely counting fragments
+count_stats_t <- count_stats %>% 
+  t %>% 
+  as_tibble() %>% 
+  mutate(bamfile=colnames(count_stats)) %>%
+  mutate(Total=colSums(count_stats)) %>%
+  mutate(perc_assigned = Assigned/Total*100)
+
+# Plot the percentages in a bar graph
+count_stats_t %>% ggplot(aes(x = bamfile, y = perc_assigned, fill=bamfile)) +
+  geom_col() +
+  ggtitle("Proportion of counted fragments for each sample") +
+  xlab("RNA-seq sample") +
+  ylab("Percentage of counted fragments") +
+  theme_bw() +
+  theme(legend.position = "none", axis.text.x = element_text(angle = 90)) +
+  coord_cartesian (ylim =c(0,100))
+```
+
+What is your conclusion based on the graph?
+Conclusion: Based on this graph you can conclude that 80-85% of the fragments can be assigned to a gene. The remaining fragments originate from other regions of the genome.
+
+
+# Obtain the count matrix
+count_matrix <- read_counts$counts
+
+# Import the sample data
+metadata <- read_csv("/home/daur2/rnaseq/rnaseq_airway/airway_sampledata.csv")
+
+# Convert the metadata to dataframe object
+metadata <- as.data.frame(metadata)
+
+# Add rownames to the metadata dataframe
+rownames(metadata) <- paste0(metadata$Run, ".bam")
+
+# Show first lines of metadata object
+head(metadata)
+
+# Check if column names of count table are the same as row names of metadata object
+colnames(count_matrix) == rownames(metadata)
+
+# Create a column specifying the test condition
+metadata <- metadata %>% mutate(treatment = str_replace(dex, "trt", "treated"))
+metadata$treatment <- metadata$treatment %>% factor(levels = c("untreated", "treated"))
+
+# Load the required library
+library(DESeq2)
+
+# Create the DESeqDataSet object
+dds <- DESeqDataSetFromMatrix(
+  countData = count_matrix,
+  colData = metadata, 
+  design = ~ treatment
+)
+
+
+Exercise 2.4
+Determine the distribution of count values for one of the samples using the quantile() function.
+
+What can you conclude based on the results?
+
+# Show count distribution for one sample
+quantile(count_matrix[,"SRR1039509.bam"])
+
+Based on this, you can conclude that almost half of the genes are not or hardly expressed in the cells.
+
+dds_normalized <- rlog(dds)
+
+# Perform PCA on the airway study dataset
+pca <- dds_normalized %>% assay() %>% t() %>% prcomp()
+
+# Find the proportion of variance explained by each PC
+pca_summary <- summary(pca)$importance
+pca_summary
+
+```{r geompoint}
+# Create data frame with metadata and the PCA values for plotting
+pca_plotting <- cbind(metadata, pca$x)
+
+# Obtain the percentages of variation covered by PC1 and PC2
+PC1_var <- round(pca_summary["Proportion of Variance", "PC1"]*100, digits = 1)
+PC2_var <- round(pca_summary["Proportion of Variance", "PC2"]*100, digits = 1)
+
+# Plot PC1 vs PC2
+ggplot(pca_plotting) + 
+  geom_point(aes(x=PC1, y=PC2, color = treatment, shape = cell_line), size = 5) +
+  ggtitle("PCA for airway study") +
+  xlab(paste0("PC1 (", PC1_var, "%)")) +
+  ylab(paste0("PC2 (", PC2_var, "%)")) +
+  theme_bw()
+```
+
+Exercise 2.5
+What can you conclude based on the graph of PC1 and PC2?
+The first PC, PC1, captures about 40% of the variation in the data, which is almost half of all variation. Based on PC1, the samples are separated in two groups, which correspond to the treatment. This is something we want to see, because we expect that the treatment changes the gene expression and that these changes are the biggest signal in the data.
+
+The second PC, PC2, captures about 25% of the variation in the data. Based on PC2, we see that one of the cell lines, N080611 is separated from the other cell lines. We cannot say (based on this PCA plot) why this is the case. However, it is expected that any remaining variation in gene expression (besides the variation explained by treatment) is due to differences between the cell lines (remember that the cell lines come from different donors and have different genetic backgrounds!).
+
+
+Exercise 2.3
+Create a graph for PC3 vs PC4.
+
+
+```{r geompoint2}
+# Obtain the percentages of variation covered by PC1 and PC2
+PC3_var <- round(pca_summary["Proportion of Variance", "PC3"]*100, digits = 1)
+PC4_var <- round(pca_summary["Proportion of Variance", "PC4"]*100, digits = 1)
+
+# Plot PC1 vs PC2
+ggplot(pca_plotting) + 
+  geom_point(aes(x=PC3, y=PC4, color = treatment, shape = cell_line), size = 5) +
+  ggtitle("PCA for airway study") +
+  xlab(paste0("PC3 (", PC3_var, "%)")) +
+  ylab(paste0("PC4 (", PC4_var, "%)")) +
+  theme_bw()
+```
+
+What can you conclude based on this graph?
+
+Based on this graph, we can say dat PC3 and PC4 together capture 25% of the variation. Both PC3 and PC4 separate the samples based on cell line, just like PC2.
+
+```{r heatmap}
+# Extract the matrix from the normalized DESeq object
+dds_normalized_matrix <- assay(dds_normalized)    
+
+# Compute pairwise correlation values
+airway_cor <- cor(dds_normalized_matrix)    
+airway_cor
+
+# Load pheatmap package
+library(pheatmap)
+
+# Plot heatmap using the correlation; annotate the heatmap based on the treatment
+pheatmap(airway_cor, annotation = metadata["treatment"])
+```
+
+Exercise 2.7
+What can you conclude based on the heatmap?
+Also in the heatmap, samples cluster together based on the treatment. So the heatmap confirms the results of the PCA.
+
+In general, we can also see that the correlation coefficients between the samples are high (> 0.99). This is something that we expect: although the expression of some genes will change due to the treatment, most genes are fairly constantly expressed in all the samples.
+
+Exercise 2.8
+Create a heatmap with the correlation coefficients of the airway study, but this time without clustering (use the help page of the pheatmap() function to see which options should be changed). Which heatmap is easier to read: the heatmap with or without clustering? Why?
+
+```{r heatmap no cluster}
+# Plot heatmap without clustering
+pheatmap(airway_cor, annotation = metadata["treatment"],
+         cluster_rows = FALSE, cluster_cols = FALSE)
+```
+
+The clustered one is way easier to read, because similar samples are grouped together. Hence, with clustering, you can more easily see which samples are more similar to each other.

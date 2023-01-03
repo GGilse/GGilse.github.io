@@ -1,9 +1,9 @@
 # Curriculum Vitae {-}
 
-## Name {-}
+**[Insert Name here]**
+
 <img src="port_data/20220921_140223.jpg"
-     width="250" 
-     height="200"/>
+     width="250" />
 
 Adres
 <br/>

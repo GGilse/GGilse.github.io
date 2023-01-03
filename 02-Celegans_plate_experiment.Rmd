@@ -157,5 +157,4 @@ ggplot(elegansData_pct, aes(x=compConcentration, y=normalized, shape=expType, co
        subtitle= "Amount of offspring after 68 hours"
 )
 ```
-
-We have normalized the data so it's easier to understand and work with.
+The data has been normalized so it's easier to understand and work with.

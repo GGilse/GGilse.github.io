@@ -1,0 +1,325 @@
+---
+title: "Eindopdracht Daur2_V7"
+author: "Ghislaine van Gilse & Omar Sprockel"
+date: "03-11-2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+#download eventueel de packages als dit nog niet is gebeurd
+library(png)
+library(grid)
+library(gridExtra)
+library(Rsubread)
+library(tidyverse)
+library(ggplot2)
+library(DESeq2)
+library(pheatmap)
+library("org.Hs.eg.db")
+library(GO.db)
+library(GOstats)
+```
+
+Opdracht 1
+
+Korte introductie
+Hersenonderzoek naar een ziekte is erg lastig. Het is niet mogelijk om hersencellen te isoleren uit levende patiënten. Hier is een alternatief voor bedacht. Er worden fibroblasten uit de patiënt geïsoleerd en deze worden terug gedifferentieerd naar geïnduceerde pluripotente stamcellen en deze worden vervolgens omgezet naar hersencellen. Dit kost echter relatief veel tijd. Een alternatief is de fibroblasten direct omzetten naar de hersencellen, dit heet transdifferentiatie. Om een beter beeld te krijgen van de cellen van een patiënt, worden de cellen vergeleken met cellen van een gezond individu.
+In dit onderzoek zijn de fibroblasten afkomstig van één proefpersoon. Hierbij wordt een deel van de cellen behandeld met een controle transcriptiefactor (BCLXL) en een ander deel van de cellen met een transcriptiefactor (ONECUT1). Er wordt verwacht dat onder invloed van ONECUT1 de cellen kunnen differentiëren tot hersencellen. Vervolgens gaat er gekeken worden naar de verschillen in genexpressie tussen de BCLXL behandelde cellen en de met de ONECUT1 behandelde cellen.
+
+Opdracht 2
+```{r Check quality, echo=FALSE}
+"Over het algemeen ziet de kwaliteit van de fastq bestanden er goed genoeg uit. Zowel de per base sequence quality als de per sequence quality scores zien er goed uit. Afbeelding 1 & 2 geven de slechtste file weer, de rest van de files lijkt meer zoals afbeelding 3."
+```
+
+```{r , echo=FALSE, fig.height=3, out.width= '100%'}
+Snip1 <-  rasterGrob(as.raster(readPNG("~/daur2/eindopdracht_daur2/Snip1.png")))
+Snip2 <-  rasterGrob(as.raster(readPNG("~/daur2/eindopdracht_daur2/Snip2.png")))
+Snip3 <-  rasterGrob(as.raster(readPNG("~/daur2/eindopdracht_daur2/Snip3.png")))
+grid.arrange(Snip1, Snip2, Snip3, ncol=2, top=textGrob("Per base sequence kwaliteit verdeling van de slechtste (boven) en een gemiddelde grafiek (onder)", gp=gpar(fontsize=10,font=8)))
+```
+
+
+Opdracht 3
+```{r count_table, eval = FALSE}
+# Create object with input dir for bam files
+bam_dir <- "/home/daur2/rnaseq/rnaseq_onecut/bam/"
+
+# Create object with output dir for count tables
+counts_dir <- "/home/daur2/rnaseq/rnaseq_onecut/counts/"
+
+# Create vector with names of bam files
+bam_files <- list.files(bam_dir, pattern = "SRR7866699.bam”, “SRR7866700.bam”, “SRR7866701.bam”, “SRR7866702.bam", full.names = TRUE)
+
+# Count the reads per gene using the in-built NCBI RefSeq annotations
+read_counts <- featureCounts(files = bam_files,
+                             annot.inbuilt = "hg38",
+                             useMetaFeatures = TRUE,
+                             strandSpecific = 1,
+                             isPairedEnd = TRUE,
+                             countReadPairs = TRUE,
+                             nthreads = 10)
+```
+
+```{r make DESeq2 object, echo = FALSE, message=FALSE, warning=FALSE}
+#Opdracht4
+read_counts <- readRDS("/home/daur2/rnaseq/rnaseq_onecut/counts/read_counts_OC1.rds")
+
+# Obtain the count matrix
+count_matrix <- read_counts$counts
+
+# Import the sample data
+metadata <- read_csv("/home/daur2/rnaseq/rnaseq_onecut/onecut_sampledata_OC1.csv")
+
+# Convert the metadata to dataframe object
+metadata <- as.data.frame(metadata)
+
+# Add rownames to the metadata dataframe
+rownames(metadata) <- paste0(metadata$Run, ".bam")
+
+# Create a column specifying the test condition
+metadata$treatment <- c("BCLXL", "BCLXL", "ONECUT1", "ONECUT1")
+
+# Create the DESeqDataSet object
+dds <- DESeqDataSetFromMatrix(countData = count_matrix, colData = metadata, design = ~ treatment)
+```
+
+Opdracht 5a
+```{r PCA staafdiagram, echo=FALSE}
+dds_normalized <- rlog(dds)
+
+# Perform PCA on the hc study dataset
+pca <- dds_normalized %>% assay() %>% t() %>% prcomp()
+
+# Find the proportion of variance explained by each PC
+pca_summary <- summary(pca)$importance
+pca_summary
+
+# Create data frame with metadata and the PCA values for plotting
+pca_plotting <- cbind(metadata, pca$x)
+
+# Obtain the percentages of variation covered by PC1 and PC2
+PC1_var <- round(pca_summary["Proportion of Variance", "PC1"]*100, digits = 1)
+PC2_var <- round(pca_summary["Proportion of Variance", "PC2"]*100, digits = 1)
+PC3_var <- round(pca_summary["Proportion of Variance", "PC3"]*100, digits = 1)
+PC4_var <- round(pca_summary["Proportion of Variance", "PC4"]*100, digits = 1)
+
+PC5 <- c(PC1_var, PC2_var, PC3_var, PC4_var)
+PC5 <- as_tibble(PC5)
+PC5$PC <- c("PC1", "PC2", "PC3", "PC4")
+
+# Plot PC1 tm PC4 in column
+ggplot(PC5) + 
+    geom_col(aes(x=PC, y=value, fill=PC)) +
+    ggtitle("Vergelijking PCA hersencellen") +
+    xlab('PC var') +
+    ylab('percentage') +
+    theme_bw()+
+    theme(legend.position = "none")
+```
+
+Opdracht 5b
+```{r PCA 1v2 grafiek, echo = FALSE, message=FALSE}
+dds_normalized <- rlog(dds)
+
+# Perform PCA on the hc study dataset
+pca <- dds_normalized %>% assay() %>% t() %>% prcomp()
+
+# Find the proportion of variance explained by each PC
+pca_summary <- summary(pca)$importance
+pca_summary
+
+# Create data frame with metadata and the PCA values for plotting
+pca_plotting <- cbind(metadata, pca$x)
+
+# Obtain the percentages of variation covered by PC1 and PC2
+PC1_var <- round(pca_summary["Proportion of Variance", "PC1"]*100, digits = 1)
+PC2_var <- round(pca_summary["Proportion of Variance", "PC2"]*100, digits = 1)
+ggplot(pca_plotting) + 
+  geom_point(aes(x=PC1, y=PC2, color = treatment, shape = treatment), size = 5) +
+  ggtitle("PCA voor hersencellen onderzoek") +
+  xlab(paste0("PC1 (", PC1_var, "%)")) +
+  ylab(paste0("PC2 (", PC2_var, "%)")) +
+  theme_bw()+
+  labs(color="behandeling", shape="behandeling")
+```
+
+PC1 vangt veruit de meeste variatie van de analyses. PC2 en PC3 vangen nog wat variatie, waarna PC4 zo goed als geen variatie meer vangt. De variatie van ONECUT1 is groot op PC2.
+
+Opdracht 6a
+
+```{r Volcanoplot, echo = FALSE, message = FALSE}
+# Perform the DGE analysis using DESeq2
+hc_dge <- DESeq(dds)
+# Obtain the results for the DGE analysis
+hc_dge_results <- results(hc_dge)
+
+# Obtain the genes with a significant p-value
+sign_genes <- hc_dge_results[which(hc_dge_results$padj < 0.05),]
+
+# Obtain the id of the most significantly upregulated gene
+topGene <- sign_genes[which.max(sign_genes$log2FoldChange),]
+topGene_name <- rownames(topGene)
+
+# Create a dataframe for plotting without genes with padj = NA
+hc_dge_plotting <- data.frame(hc_dge_results) %>% filter(!is.na(padj))
+
+# Create column specifying if gene is significantly differentially expressed
+hc_dge_plotting <- hc_dge_plotting %>% 
+  mutate(signif = if_else(padj < 0.01 & abs(log2FoldChange) >1, "Significant", "Not significant"))
+
+# Count number of significant up- and downregulated genes
+number_upregulated <- sum(hc_dge_plotting$signif == "Significant" & hc_dge_plotting$log2FoldChange >= 1)
+number_downregulated <- sum(hc_dge_plotting$signif == "Significant" & hc_dge_plotting$log2FoldChange <= -1)
+
+# Create a volcano plot
+hc_dge_plotting %>% 
+  ggplot(aes(x = log2FoldChange, y = -log10(padj), color = signif)) +
+  geom_point() + 
+  xlab("log2 fold change") +
+  ylab("-log10 adjusted p-value") + 
+  theme_bw() +
+  
+  # Change the legend text and the colours
+  scale_colour_manual(values = c("grey", "darkorange"), name = "Significance") +
+  
+  # Annotate the number of significant up- and downregulated genes
+  annotate("text", x = 8, y = 100, 
+           label = number_upregulated, colour = "black")+
+
+ annotate("text", x = -5, y = 100, 
+           label = number_downregulated, colour = "black")+
+
+# Indicate thresholds as lines
+  geom_hline(yintercept = -log10(0.01), linetype = "dashed") +
+  geom_vline(xintercept = 1, linetype = "dashed") +
+  geom_vline(xintercept = -1, linetype = "dashed")
+```
+
+Opdracht 6b
+
+```{r HeatMap, echo = FALSE, message = FALSE}
+# Obtain the gene identifiers of the 5 most significant genes
+top5_genes <- rownames(hc_dge_results[order(hc_dge_results$padj)[1:5],])
+
+# Obtain the count values for these genes
+count_values <- assay(dds)[top5_genes,]
+
+# Replace the column names with conditions
+colnames(count_values) <- colData(dds)$treatment
+
+# Create a dataframe for the 5 most significantly DE genes
+top5_genesdf <- hc_dge_results[order(hc_dge_results$padj)[1:5],] %>% data.frame()
+
+# Create an extra column with the Entrez id (based on rownames)
+top5_genesdf <- top5_genesdf %>% mutate(entrezid = rownames(top5_genesdf))
+
+# Obtain the gene symbols based on the Entrez identifiers
+top5_genes_symb <- mapIds(org.Hs.eg.db,
+                             keys = top5_genesdf$entrezid,
+                             column = "SYMBOL",
+                             keytype = "ENTREZID",
+                             multiVals = "first")
+
+# Replace the column names with conditions
+rownames(count_values) <- top5_genes_symb
+
+# Visualize the results in a heatmap
+pheatmap(count_values, scale = "row", show_rownames = TRUE)
+```
+
+Opdracht 7
+```{r functie GoIDtoSymbol, echo= FALSE, message = FALSE}
+GOidtoSymbol <- function(GO_ID) {
+
+# Obtain the gene symbols based on the Entrez identifiers
+mapIds(org.Hs.eg.db,
+       keys = GO_ID,
+       column = "SYMBOL",
+       keytype = "GO",
+       multiVals = "list")
+}
+```
+
+```{r test function GO_ID, echo= FALSE}
+GOidtoSymbol (GO_ID = "GO:0036003")
+```
+
+
+Opdracht 8
+
+```{r GO_term_enrichment, echo = FALSE}
+
+# Create a list of up- and downregulated genes
+upregulated_genes <- hc_dge_results %>% data.frame() %>% 
+  filter(log2FoldChange > 1, padj < 0.01) %>% rownames()
+
+downregulated_genes <- hc_dge_results %>% data.frame() %>% 
+  filter(log2FoldChange < -1, padj < 0.01) %>% rownames()
+
+# Create a list of all genes in the dataset
+all_genes <- hc_dge_results %>% data.frame() %>% rownames()
+
+# Perform GO term enrichment analysis
+test_object_up <- new("GOHyperGParams",
+                   geneIds = upregulated_genes,
+                   universeGeneIds = all_genes, 
+                   annotation = "org.Hs.eg.db", 
+                   ontology = "BP", 
+                   pvalueCutoff = 1,
+                   testDirection = "over")
+goterm_analysis_up <- hyperGTest(test_object_up)
+
+test_object_down <- new("GOHyperGParams",
+                   geneIds = downregulated_genes,
+                   universeGeneIds = all_genes, 
+                   annotation = "org.Hs.eg.db", 
+                   ontology = "BP", 
+                   pvalueCutoff = 1,
+                   testDirection = "over")
+goterm_analysis_down <- hyperGTest(test_object_down)
+
+# Obtains dataframe with results of GO term analysis
+goterm_analysis_up_results <- summary(goterm_analysis_up)
+goterm_analysis_down_results <- summary(goterm_analysis_down)
+
+# Adjust the p values for multiple testing
+goterm_analysis_up_results$padj <- p.adjust(goterm_analysis_up_results$Pvalue, method = "BH")
+goterm_analysis_down_results$padj <- p.adjust(goterm_analysis_down_results$Pvalue, method = "BH")
+
+# Select only gene sets that are larger than 5 but smaller 
+# than 500 (to prevent taking along very small and very large
+# gene sets).
+goterm_analysis_up_results <- goterm_analysis_up_results %>% filter(Count > 5) %>% filter(Count < 500)
+goterm_analysis_down_results <- goterm_analysis_down_results %>% filter(Count > 5) %>% filter(Count < 500)
+
+# Select the top 20 GO terms
+goterm_analysis_up_top20 <- goterm_analysis_up_results[order(goterm_analysis_up_results$padj)[1:20],]
+goterm_analysis_down_top20 <- goterm_analysis_down_results[order(goterm_analysis_down_results$padj)[1:20],]
+
+# Plot the p-values of the top 20 GO terms
+goterm_analysis_up_top20$Term <- factor(goterm_analysis_up_top20$Term, 
+                                     levels = goterm_analysis_up_top20$Term[
+                                       order(goterm_analysis_up_top20$padj, decreasing = TRUE)])
+goterm_analysis_up_top20 %>% ggplot(aes(x = Term, y = -log10(padj), colour=Term)) +
+  geom_point() +
+  coord_flip() +
+  ylab(expression(-log[10](adjusted~italic(P)~value))) + 
+  xlab("GO terms") +
+  ggtitle("Top 20 enriched GO terms\n for upregulated genes") +
+  theme_bw()+
+  theme(legend.position = "none")
+
+goterm_analysis_down_top20$Term <- factor(goterm_analysis_down_top20$Term, 
+                                     levels = goterm_analysis_down_top20$Term[
+                                       order(goterm_analysis_down_top20$padj, decreasing = TRUE)])
+goterm_analysis_down_top20 %>% ggplot(aes(x = Term, y = -log10(padj), colour=Term)) +
+  geom_point() +
+  coord_flip() +
+  ylab(expression(-log[10](adjusted~italic(P)~value))) + 
+  xlab("GO terms") +
+  ggtitle("Top 20 enriched GO terms\n for downregulated genes") +
+  theme_bw()+
+  theme(legend.position = "none")
+```
+
+Te zien valt dat onder invloed van ONECUT1 de cellen veel meer activiteit voor hersencel geassocieerde genen vertonen. Zoals RNA synthese en DNA transcriptie. Terwijl genen die meer geassocieerd worden met fibroblasten, zoals celstructuur regulatie, een stuk minder activiteit vertonen. Op basis van dit verschil in genactiviteit concluderen wij dat de cellen differentiëren tot hersencellen onder invloed van ONECUT1.

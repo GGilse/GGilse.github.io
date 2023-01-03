@@ -1,0 +1,108 @@
+---
+title: "Untitled"
+author: "Ghislaine van Gilse"
+date: "10/31/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=T, eval=F}
+# update conda to the newest version and answer y on question proceed
+echo "y" | conda update -n base conda
+
+```
+
+```{bash, engine.opts='-i', echo=T, eval=T}
+# show all conda virtual environments
+conda env list
+
+# show yml file content
+cat ~/daur2/setup_meta_env.yml
+
+```
+
+```{bash, engine.opts='-i', echo=T, eval=F}
+# create conda virtual environment
+conda env create --file ~/daur2/setup_meta_env.yml
+```
+
+Exercise 6.1
+Can you think of a reason that we specify the python dependency? Python is already installed, otherwise we wouldn’t be able to use the conda software, which is python based software…
+
+  Software can be quite dependent on the particular version of python that is used.
+  Later on we will need to use software that is dependent on this version of python, which is not the default version when opening a conda environment.
+  
+
+Exercise 6.2
+The read length of this data is about 100-150 bp. You can see this using the following command:
+zcat HU1_MOCK1_L001_R1_001.fastq.gz | head -n 10
+Google the typical read length range for illumina and minion.
+What sequencing platform was used to generate this dataset with?
+  The illumina. Illumina has reads around 150bp while minion has way longer reads
+
+Exercise 6.3
+What could R1 and R2 stand for?
+  Forward and reverse reads. Every forward read has a corresponding reverse read.
+
+```{bash, engine.opts='-i', echo=T, eval=F}
+# activate environment
+conda activate meta
+
+# install fastqc and answer yes for procceed question
+echo "y" | conda install -c bioconda fastqc
+
+# deactivate conda virtual environment
+conda deactivate
+```
+
+```{bash, engine.opts='-i', echo=T, eval=F}
+# activate environment
+conda activate meta
+
+# perform FastQC analysis (change first path to your own folder structure if needed)
+fastqc -o ~/daur2/les6 /home/daur2/metagenomics/reader_data/HU1_MOCK1_L001_R1_001.fastq.gz
+fastqc -o ~/daur2/les6 /home/daur2/metagenomics/reader_data/HU1_MOCK1_L001_R2_001.fastq.gz
+
+# deactivate conda virtual environment
+conda deactivate
+```
+
+Exercise 6.4
+a) How many reads are in your dataset?
+  40237621 reads.
+b) What is the average quality?
+  Zo rond de 36?
+c) How many reads are of poor quality?
+  0
+
+Exercise 6.5
+What is the average error rate in percentages?
+  >99,9% accuracy
+
+
+Exercise 6.6
+Based on the quality analysis: do we need to filter out particular reads or do we need to trim particular bases for all reads?
+  No
+  
+```{r, library}
+library(png)
+library(grid)
+library(gridExtra)
+```
+
+```{r , echo=FALSE, fig.height=3, out.width= '100%', fig.cap="Fig. 1: Quality distribution: Right-side) Foward read quality scores range from 0 to 40 on the Phred scale. All bases for all reads have very high quality (>30), indicating that our reads have an accuracy of >99,9%. Left-side)" }
+img1 <-  rasterGrob(as.raster(readPNG("~/daur2/les6/daur2_les6_qualityplot.png")))
+img2 <-  rasterGrob(as.raster(readPNG("~/daur2/les6/daur2_les6_qualityplot2.png")))
+grid.arrange(img1, img2, ncol=2, top=textGrob("Per base quality distribution of forward (right) and reverse (left) reads", gp=gpar(fontsize=10,font=8)))
+```
+
+Exercise 6.7
+Do all bases have equal quality of the entire read?
+  No, the final five bases on the reverse reads have decreased quality and a higher variability. However, the average quality (blue line) is still above Phred score 30, hence we do not need to remove those from our data set.
+  
+Exercise 6.8
+How do we include creating our virtual environment and FastQC analysis inside the rmd file, without rerunning the code every time we knit our html report?
+  To avoid rerunning analysis that are already finished you need to set eval=FALSE in the chunk header.
