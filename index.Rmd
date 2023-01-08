@@ -4,7 +4,6 @@ author: "Ghislaine van Gilse"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
-theme: lumen
 documentclass: book
 biblio-style: apalike
 link-citations: yes
