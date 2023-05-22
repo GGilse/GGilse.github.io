@@ -3,13 +3,9 @@
 Portfolio assignment 1.2
 <hr />
 
-This assigment is about identifying reproducibility issues in a scientific publication. Therefor we must use the criteria cited in table 1.
+This assignment is about identifying reproducibility issues in a scientific publication. Therefor we must use the criteria cited in table 1.
 
-
-Work in progress
-
-```{r assigment, include=FALSE, eval=FALSE}
-Table 1. Repita Criteria as given in Portfolio [Assignment 1.2](https://lesmaterialen.rstudio.hu.nl/workflows-reader/represintro.html#portfolio-assignment-1.2)
+Table 1. Repita Criteria as given in Portfolio [Assignment 1.2](https://lesmaterialen.rstudio.hu.nl/workflows-reader/represintro.html)
 
 | Transparency Criteria| Definition       | Response Type|
 |---------|-------------------------------|----------|
@@ -23,12 +19,24 @@ Table 1. Repita Criteria as given in Portfolio [Assignment 1.2](https://lesmater
 Code Availability | Authors have shared access to the most updated code that they used in their study, including code used for analysis. |Binary|
 
 Part 1:
-The article I found was published by
-Investigative Ophthalmology & Visual Science January 2011, Vol.52, 411-416.
-doi:[https://doi.org/10.1167/iovs.10-5473](https://iovs.arvojournals.org/article.aspx?articleid=2126855)
-Task-Specific Fixation Behavior in Macular Disease
-Michael D. Crossland; David P. Crabb; Gary S. Rubin
+<br/>
+https://pubmed.ncbi.nlm.nih.gov/32931516/
+<br/>
+The article I found was published September 15th, 2020.
+[DOI:10.1371/journal.pcbi.1008182](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008182)
+<br/>
+Article: MONET: Multi-omic module discovery by omic selection
+<br/>
+Autors: Nimrod Rappoport, Roy Safra, Ron Shamir 
 
-Study Purpose: 0, Thet didn't really clarify why they did this research
-Data Availablilty Statement: 0. It's not available though they do have the R code
-```
+
+| Transparency Criteria| Response  | Explanation|
+|---------|-----------|----------|
+|Study Purpose |1| It was not easy to find but the idea is that when you so omics, you only look at one omic. But you can look at multiple omics with one sample to get a better picture on something. In this case cancer.| 
+|Data Availability Statement | 01| Binary|
+|Data Location | 01| Found Value|
+|Study Location| 01| Binary; Found Value|
+|Author Review| 01|Found Value|
+|Ethics Statement | 01|Binary|
+|Funding Statement| 01|Binary|
+|Code Availability | 01 |Binary|

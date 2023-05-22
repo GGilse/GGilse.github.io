@@ -1,3 +1,22 @@
 # Portfolio assigment 5
 
 *Work in progress*
+RMarkdown - Syntax
+
+Make a new collection within Zotero for the projecticum.
+Place all pdf’s you used till now in your folder (if you did not use any papers as source yet, find 3 papers on Pubmed now that you could use for your introduction.).
+Start a .Rmd named “introduction.Rmd” with a few lines introduction on your projecticum topic.
+Include automatic inline references to the papers you used.
+The bibliography will be placed at the end of the document. Provide an appropriate header.
+NOTE! Now we will try collaborating using .bib or .json files. We are not entirely sure what will happen if you knit and merge bib/json files using the automatic header option. If you used that to quickly and conveniently get all the references in a .bib/.json file, you may want to change your header to something like this now, and update everytime you add a reference:
+
+title: "Untitled" 
+output: html_document 
+bibliography: bibliography.bib
+Or try if you can get it to work with the automatic option! We are curious to see what will happen.
+
+Either way:
+
+Merge your work with that of your projecticum partner through github. Solve all the problems you encounter. If github does not want to merge .bib or .json files and you want a merged one, try here.
+Find out how you can add websites as reference to Zotero.
+In your portfolio, write at least 500 words of introduction for your projecticum project and use at least 5 references.

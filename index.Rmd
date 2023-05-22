@@ -3,11 +3,13 @@ title: "Portfolio Ghislaine"
 author: "Ghislaine van Gilse"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: 
+    bookdown::gitbook:
+        css: toc.css
 documentclass: book
 biblio-style: apalike
 link-citations: yes
-new_session: yes  
+new_session: yes
 ---
 
 # Prerequisites {-}
